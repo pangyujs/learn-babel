@@ -22,7 +22,6 @@ const autoTrackPlugin = declare((api, options, dirname) => {
               }
             },
           });
-          console.log(state.trackerImportId, "iiiiiiiiiii");
           if (!state.trackerImportId) {
             state.trackerImportId = importModule.addDefault(path, "tracker", {
               nameHint: path.scope.generateUid("tracker"),
