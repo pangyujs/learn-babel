@@ -13,12 +13,13 @@ const autoTrackPlugin = declare((api, options, dirname) => {
               const requirePath = curPath.get("source").node.value;
               if (requirePath === options.trackerPath) {
                 const specifierPath = curPath.get("specifiers.0");
+                // 如果自己写入应该判断为isImportDefaultSpecifier
                 if (specifierPath.isImportSpecifier()) {
                   state.trackerImportId = specifierPath.toString();
                 } else if (specifierPath.isImportNamespaceSpecifier()) {
                   state.trackerImportId = specifierPath.get("local").toString();
                 }
-                path.stop();
+                curPath.stop();
               }
             },
           });
