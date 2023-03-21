@@ -28,7 +28,7 @@ module.exports = declare((api, options, dirname) => {
       path.findParent((p) => p.isJSXAttribute()) &&
       !path.findParent((p) => p.isJSXExpressionContainer())
     ) {
-      replaceExpression = api.types.isJSXExpressionContainer(replaceExpression);
+      replaceExpression = api.types.JSXExpressionContainer(replaceExpression);
     }
     return replaceExpression;
   }
