@@ -1,5 +1,5 @@
 const path = require("path");
-const generate = require("@babel/generator");
+const generate = require("@babel/generator").default;
 const { declare } = require("@babel/helper-plugin-utils");
 const fse = require("fs-extra");
 
@@ -23,7 +23,7 @@ module.exports = declare((api, options, dirname) => {
       `${intlUid}.t('${value}'${
         expressionParams ? "," + expressionParams.join(",") : ""
       })`
-    ).expressions;
+    ).expression;
     if (
       path.findParent((p) => p.isJSXAttribute()) &&
       !path.findParent((p) => p.isJSXExpressionContainer())
@@ -96,7 +96,6 @@ module.exports = declare((api, options, dirname) => {
           key,
           state.intlUid
         );
-        console.log("repalce========", replaceExpression);
         path.replaceWith(replaceExpression);
         path.skip();
       },
@@ -110,13 +109,13 @@ module.exports = declare((api, options, dirname) => {
           .join("{placeholder}");
         if (value) {
           let key = nextIntlkey();
-          save(state.ile, key, value);
+          save(state.file, key, value);
           const replaceExpression = getReplaceExpression(
             path,
             key,
             state.intlUid
           );
-          path.replaceWidth(replaceExpression);
+          path.replaceWith(replaceExpression);
           path.skip();
         }
       },
