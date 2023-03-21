@@ -16,6 +16,7 @@
     "@babel/traverse": "^7.21.3",
     "@babel/types": "^7.21.3",
     "acorn": "^8.8.2",
+    "doctrine": "^3.0.0",
     "fs-extra": "^11.1.1"
   }
 }
