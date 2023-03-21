@@ -63,7 +63,7 @@ module.exports = declare((api, options, dirname) => {
             const uid = path.scope.generateUid("intl");
             const importAst = api.template.ast(`import ${uid} from 'intl'`);
             path.node.body.unshift(importAst);
-            state.initUid = uid;
+            state.intlUid = uid;
           }
           path.traverse({
             "StringLiteral|TemplateLiteral"(p) {
